@@ -1,0 +1,32 @@
+<%@ jet 
+	imports="
+		org.talend.core.model.process.INode 
+		org.talend.core.model.process.ElementParameterParser 
+		org.talend.core.model.metadata.IMetadataTable 
+		org.talend.core.model.metadata.IMetadataColumn 
+		org.talend.core.model.process.IConnection
+		org.talend.core.model.process.IConnectionCategory
+		org.talend.designer.codegen.config.CodeGeneratorArgument
+		org.talend.core.model.metadata.types.JavaTypesManager
+		org.talend.core.model.metadata.types.JavaType
+		java.util.List
+	" 
+%>
+<% 
+    CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+    INode node = (INode)codeGenArgument.getArgument();
+    boolean useExistingConnection = "true".equalsIgnoreCase(ElementParameterParser.getValue(node,"__USE_EXISTING_CONNECTION__"));
+    String cid = node.getUniqueName();
+    String collection = ElementParameterParser.getValue(node,"__COLLECTION__");
+
+    if (useExistingConnection)
+    {
+	String connection = ElementParameterParser.getValue(node, "__CONNECTION__");
+	String dbconn = "db_" + connection;
+        %>
+	com.mongodb.DB db_<%=cid%> = (com.mongodb.DB) globalMap.get("<%=dbconn%>");
+        com.mongodb.DBCollection coll_<%=cid%> = db_<%=cid%>.getCollection(<%=collection%>);
+	<%
+    }
+%>
+int nb_line_<%=cid %> = 0;
