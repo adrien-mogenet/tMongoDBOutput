@@ -1,1 +1,36 @@
-Talend component to insert rows into a MongoDB server
+==============================================================================
+
+                               * R E A D M E *
+
+==============================================================================
+
+	ABOUT
+	=====
+
+		Author: ........Adrien Mogenet <adrien.mogenet@gmail.com>
+		Creation: ......2010-04-13
+
+
+	PURPOSE
+	=======
+	
+		tMongoDBOutput is a Talend component to be used in Talend Open 		
+		Studio or Talend Integration Suite in order to insert rows from a
+		Talend flow to a MongoDB server.
+		
+		A tMongoDBConnection is required.
+		
+		
+	HOW TO USE IT
+	=============
+	
+		You just have to fill the schema to use.
+		
+
+	BUGS / TODO
+	===========
+	
+		
+==============================================================================
+
+
