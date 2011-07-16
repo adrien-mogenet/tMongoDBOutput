@@ -39,7 +39,7 @@
   <ADVANCED_PARAMETERS></ADVANCED_PARAMETERS>  
   <CODEGENERATION> 
     <IMPORTS> 
-      <IMPORT MODULE="mongo-1.3.jar" NAME="mongo-1.3" REQUIRED="true"/> 
+      <IMPORT MODULE="mongo-2.6.3.jar" NAME="mongo-2.6.3" REQUIRED="true"/> 
     </IMPORTS> 
   </CODEGENERATION>  
   <RETURNS> 
