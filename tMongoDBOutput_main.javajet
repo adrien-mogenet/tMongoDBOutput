@@ -22,6 +22,7 @@ imports="
   CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
   INode node = (INode)codeGenArgument.getArgument();
   String cid = node.getUniqueName();
+  String dataAction = ElementParameterParser.getValue(node,"__DATA_ACTION__");
 
 
   /*
@@ -81,6 +82,18 @@ imports="
           <%
       }
   }
+  if ("INSERT".equals(dataAction)) {
 %>
-coll_<%=cid%>.insert(newDoc);
+      coll_<%=cid%>.insert(newDoc);
+<%
+  } else if ("INSERT_OR_UPDATE".equals(dataAction)) {
+%>
+      coll_<%=cid%>.save(newDoc);
+<%
+  } else if ("DELETE".equals(dataAction)) {
+%>
+      coll_<%=cid%>.remove(newDoc);
+<%
+  }
+%>
 ++nb_line_<%=cid %>;
